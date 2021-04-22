@@ -5,9 +5,9 @@ date: "2021-04-11T23:46:37.121Z"
 
 Chris Hadfield not only sung Space Oddity from Space but also has written some words in a book that makes a whole lot of sense. One of those things was that you can be viewed one of 3 ways:
 
-+1 : Actively adding value
-  0 : Neutral, not adding a lot but not detracting either
--1 : Actively causing damage, detracting from the team
+- +1 : Actively adding value
+- 0 : Neutral, not adding a lot but not detracting either
+- -1 : Actively causing damage, detracting from the team
 
 Your value is not a constant, it changes depending on where you are, who you're with and what the context is. In one meeting you might be a solid +1 and in the next meeting your a 0. Know what you are at any given time. This is the beautify of this practice, you have to be introspective, you have to look at your environment and decide what it needs. 
 
