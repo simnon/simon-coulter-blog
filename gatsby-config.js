@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Simon Coulter Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Simon Coulter`,
+      summary: `I'm Simon Coulter an engineering manager in Dublin, spent most of my life in Ireland but was born in Papua New Guinea. I like building things in my spare time.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Blogging on Engineering Management & building things`,
+    siteUrl: `www.simoncoulter.com`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `simcoulter`,
     },
   },
   plugins: [
