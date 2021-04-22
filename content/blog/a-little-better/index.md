@@ -25,5 +25,3 @@ The best part is that you can pass these improvements on to others. How can you 
 - Break it into 5 minute activities to improve at these areas
 - Set time in your calendar to improve at every day, form this habit
 - Keep a diary, write down what you improved at each day
-
----
