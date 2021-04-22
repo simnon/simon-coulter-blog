@@ -6,9 +6,9 @@ module.exports = {
       summary: `I'm Simon Coulter an engineering manager in Dublin, spent most of my life in Ireland but was born in Papua New Guinea. I like building things in my spare time.`,
     },
     description: `Blogging on Engineering Management & building things`,
-    siteUrl: `www.simoncoulter.com`,
+    siteUrl: `https://www.simoncoulter.com`,
     social: {
-      twitter: `simcoulter`,
+      twitter: `kylemathews`,
     },
   },
   plugins: [
