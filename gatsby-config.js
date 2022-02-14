@@ -14,10 +14,36 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     {
+      resolve: `gatsby-source-pocket`,
+      options: {
+        consumerKey: "100834-b87731450096ac94eb49d02",
+        accessToken: "359aa164-860a-165e-8a90-547864",
+        weeksOfHistory: 1252,
+        apiMaxRecordsToReturn: 3000,
+        getCurrentWeekOnly: `n`,
+        stateFilterString: "all",
+        tagFilter: true,
+        tagFilterString: "simoncoulter.com", //"_untagged_"
+        favouriteFilter: true,
+        favouriteFilterValue: 1,
+        // searchFilter: false,
+        // searchFilterString: "These 21 things",
+        // domainFilter: false,
+        // domainFilterString: "buzzfeed.com"
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about`,
+        name: `about`,
       },
     },
     {
@@ -51,12 +77,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [`G-V2JCRMKRVH`],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: `ADD YOUR TRACKING ID HERE`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -105,6 +131,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
+            title: "Gatsby Starter Blog RSS Feed",
           },
         ],
       },
@@ -116,13 +143,14 @@ module.exports = {
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
