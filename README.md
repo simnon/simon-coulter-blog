@@ -1,3 +1,13 @@
+TODO: 
+Integrate GETPOCKET reading recommendations 
+  - https://www.gatsbyjs.com/plugins/gatsby-theme-pocket/?=pocket
+Integrate Overcast.fm fav recommendations 
+  - https://www.gatsbyjs.com/plugins/gatsby-source-opml/?=podcast
+  - extract opml https://web.postman.co/workspace/My-Workspace~d7a750f5-723a-4a2a-87f2-7ead29cf5c10/collection/3886-3fe288ec-71b5-4a6b-8480-376f67c8acf5
+  
+Integrate Goodreads book recommendations 
+Integrate Plex tv/movie recommendations 
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
@@ -103,3 +113,4 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
