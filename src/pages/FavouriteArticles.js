@@ -1,10 +1,7 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-
-import Bio from "../components/bio"
+import {graphql} from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-// import NavBar from "../components/navbar"
 import FavouritePocket from "../components/pocket"
 
 const FavouriteArticles = ({ data, location }) => {
