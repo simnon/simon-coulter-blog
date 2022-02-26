@@ -7,8 +7,10 @@ const Layout = ({ location, title, children }) => {
   const isRootPath = location.pathname === rootPath
 
   return (
+    <div>
+    <Navbar />
     <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <Navbar />
+      
       
       <main>{children}</main>
       <footer>
@@ -17,6 +19,7 @@ const Layout = ({ location, title, children }) => {
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </footer>
+    </div>
     </div>
   )
 }
