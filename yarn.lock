@@ -6138,6 +6138,13 @@ gatsby-remark-smartypants@^5.7.0:
     retext-smartypants "^4.0.0"
     unist-util-visit "^2.0.3"
 
+gatsby-remark-youtube@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-youtube/-/gatsby-remark-youtube-1.1.1.tgz#05c399fe99122e9336ebcca0f7d75261e94be347"
+  integrity sha512-Tx3IocFo6cFfKuW6YQxo1/i6VYkX59TmT1B9TiPW8O76KMfeuXqw1Q1o48p1eU4ups/u0qvZY8wZDgV3gaAJZA==
+  dependencies:
+    unist-util-visit "^2.0.3"
+
 gatsby-sharp@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/gatsby-sharp/-/gatsby-sharp-0.1.0.tgz#398bbbc47f66e7512d25ce94f506b723b1bb7b33"
