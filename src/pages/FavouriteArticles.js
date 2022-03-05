@@ -10,9 +10,9 @@ const FavouriteArticles = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Favourite Articles" />
-      {/* <NavBar /> */}
       <header>
         <h1>Favourite Articles</h1>
+        <p>A collection of articles that have stood out to me in terms of quality and value.</p>
         <FavouritePocket />
       </header>
     </Layout>
