@@ -24,8 +24,8 @@ module.exports = {
         stateFilterString: "all",
         tagFilter: true,
         tagFilterString: "simoncoulter.com", //"_untagged_"
-        favouriteFilter: true,
-        favouriteFilterValue: 1,
+        // favouriteFilter: false,
+        // favouriteFilterValue: 1,
         // searchFilter: false,
         // searchFilterString: "These 21 things",
         // domainFilter: false,
