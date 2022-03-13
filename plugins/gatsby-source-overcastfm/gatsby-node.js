@@ -1,6 +1,6 @@
 const fs = require("fs")
 const uuid = require("uuid")
-const { webkit, Download } = require('playwright');  // Or 'chromium' or 'firefox'.
+const { chromium, Download } = require('playwright');  // Or 'chromium' or 'firefox'.
 const axios = require('axios');
 
 exports.sourceNodes = async (commands, configOptions) => {
@@ -14,7 +14,7 @@ const fetchOpml = async (
 ) => {
   const { createNode } = actions
   
-  const browser = await webkit.launch();
+  const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
   const email = process.env.OVERCAST_EMAIL ?? 'undefined';
