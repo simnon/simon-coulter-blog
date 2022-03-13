@@ -1,0 +1,25 @@
+{
+  "name": "gatsby-source-overcastfm",
+  "version": "1.0.0",
+  "description": "Extract data from opml files for use in gatsby",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "playwright": "^1.19.2"
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "nodemon index.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.19.2",
+    "axios": "^0.26.0",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.6.2"
+  }
+}

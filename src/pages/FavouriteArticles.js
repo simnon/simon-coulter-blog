@@ -3,6 +3,7 @@ import {graphql} from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import FavouritePocket from "../components/pocket"
+import FavouritePodcasts from "../components/podcast"
 
 const FavouriteArticles = ({ data, location }) => {
   const siteTitle = `Favourite Articles`
@@ -14,6 +15,9 @@ const FavouriteArticles = ({ data, location }) => {
         <h1>Favourite Articles</h1>
         <p>A collection of articles that have stood out to me in terms of quality and value.</p>
         <FavouritePocket />
+        <h1>Favourite Podcast Episodes</h1>
+        <p>A collection of podcast episodes that have stood out to me in terms of quality and value.</p>
+        <FavouritePodcasts />
       </header>
     </Layout>
   )

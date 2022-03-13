@@ -16,10 +16,7 @@ const FavouritePocket = ({ location, title, children }) => {
       }
     }
   `)
-  // data = [{'title': 'a'}, {'title': 'b'}, {'title': 'c'}]
   data = data.allPocketArticle.edges
-  console.log('testing')
-  console.log(JSON.stringify(data, null, 2))
   return (<div>
     <ol style={{ listStyle: `none` }}>
     {data.map(article => {

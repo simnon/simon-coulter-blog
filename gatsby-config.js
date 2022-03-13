@@ -12,6 +12,12 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ["OVERCAST_EMAIL", "OVERCAST_PASSWORD"],
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-pocket`,
@@ -31,6 +37,21 @@ module.exports = {
         // domainFilter: false,
         // domainFilterString: "buzzfeed.com"
       }
+    },
+    {
+      resolve: `gatsby-source-overcastfm`,
+      options: {
+        output: "./data/opml/overcast.opml",
+      },
+    },
+    {
+      resolve: "gatsby-source-opml-overcastfm",
+      options: {
+        // Url to opml file, relative to project root directory
+        file: `./data/opml/overcast.opml`,
+        name: `opml`,
+        skipImages: true,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,

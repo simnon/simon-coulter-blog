@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.6.0",
     "framer-motion": "^6.2.6",
     "gatsby": "^4.7.1",
+    "gatsby-plugin-env-variables": "^2.2.0",
     "gatsby-plugin-feed": "^4.7.0",
     "gatsby-plugin-gatsby-cloud": "^4.7.0",
     "gatsby-plugin-google-analytics": "^4.7.0",
@@ -29,6 +30,7 @@
     "gatsby-remark-smartypants": "^5.7.0",
     "gatsby-remark-youtube": "^1.1.1",
     "gatsby-source-filesystem": "^4.7.0",
+    "gatsby-source-opml": "^1.0.5",
     "gatsby-source-pocket": "^3.0.1",
     "gatsby-transformer-remark": "^5.7.0",
     "gatsby-transformer-sharp": "^4.7.0",
@@ -38,7 +40,9 @@
     "react-helmet": "^6.1.0",
     "stdio": "^2.1.1",
     "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "typeface-montserrat": "0.0.75",
+    "gatsby-source-overcastfm": "file:plugins/gatsby-source-overcastfm",
+    "gatsby-source-opml-overcastfm": "file:plugins/gatsby-source-opml-overcastfm"
   },
   "devDependencies": {
     "prettier": "^2.5.1"
