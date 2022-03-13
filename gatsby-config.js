@@ -38,12 +38,12 @@ module.exports = {
         // domainFilterString: "buzzfeed.com"
       }
     },
-    {
-      resolve: `gatsby-source-overcastfm`,
-      options: {
-        output: "./data/opml/overcast.opml",
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-overcastfm`,
+    //   options: {
+    //     output: "./data/opml/overcast.opml",
+    //   },
+    // },
     {
       resolve: "gatsby-source-opml-overcastfm",
       options: {
