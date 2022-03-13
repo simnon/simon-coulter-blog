@@ -80,7 +80,6 @@ const createPodcastsDataSource = async (
 const processEpisodeContent = async (podcast, episode) => {
   try {
     const isFavorite = episode.userRecommendedDate !== undefined
-    console.log('fav: ' + isFavorite)
 
     return {
       name: episode.title,

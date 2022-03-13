@@ -7,9 +7,6 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
-  "browserslist": [
-    "Chrome"
-  ],
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^2.0.3",
     "@chakra-ui/react": "^1.8.3",
