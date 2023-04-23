@@ -315,6 +315,10 @@ a:focus {
   margin: var(--spacing-0);
 }
 
+.blog-post ul {
+  margin: var(--spacing-6);
+}
+
 .gatsby-highlight {
   margin-bottom: var(--spacing-8);
 }
