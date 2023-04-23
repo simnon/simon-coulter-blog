@@ -3,7 +3,7 @@ module.exports = {
     title: `Simon Coulter Blog`,
     author: {
       name: `Simon Coulter`,
-      summary: `an engineering manager in Dublin, spent most of my life in Ireland but was born in Papua New Guinea. I like building things in my spare time.`,
+      summary: `, an engineering manager in Dublin. I've spent most of my life in Ireland but was born in Papua New Guinea. I like building things in my spare time.`,
     },
     description: `Blogging on Engineering Management & building things`,
     siteUrl: `https://www.simoncoulter.com`,
