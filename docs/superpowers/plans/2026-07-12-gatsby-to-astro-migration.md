@@ -865,14 +865,24 @@ jobs:
 
 - [ ] **Step 3: Delete Gatsby remnants**
 
+CRITICAL: `src/components/` now holds BOTH the new `.astro` components (keep) and
+the old Gatsby `.js` components (delete). Do NOT `git rm -r src/components` — that
+would destroy `BaseHead.astro`, `Bio.astro`, `Navbar.astro`. Likewise `data` below
+means the ROOT-level `data/` (the OPML); do NOT touch `src/data/` (podcasts.json,
+projects.md).
+
 ```bash
-git rm -q -r plugins data src/images src/components .github/workflows/main.yml
-# remove any now-empty leftover dirs
-rmdir src/templates src/pages 2>/dev/null || true
+# root-level Gatsby dirs/files + leftover images + broken workflow
+git rm -q -r plugins data src/images .github/workflows/main.yml
+# only the old Gatsby .js components (the .astro ones stay)
+git rm -q src/components/bio.js src/components/layout.js src/components/navbar.js \
+  src/components/pocket.js src/components/podcast.js src/components/seo.js
 ```
-Note: `src/pages` must NOT be removed if it still holds Astro pages — the `rmdir` only succeeds on empty dirs, so this is safe. Confirm Astro pages remain:
+Confirm the right things survived:
 ```bash
-ls src/pages   # expected: 404.astro [slug].astro favourites.astro index.astro projects.astro rss.xml.js
+ls src/components   # expected: BaseHead.astro Bio.astro Navbar.astro
+ls src/data         # expected: podcasts.json projects.md
+ls src/pages        # expected: 404.astro [slug].astro favourites.astro index.astro projects.astro rss.xml.js
 ```
 
 - [ ] **Step 4: Rewrite `README.md`**
@@ -907,13 +917,18 @@ was produced and how the retired Pocket/Overcast pipeline worked.
 
 - [ ] **Step 5: Verify no Gatsby or secret references remain**
 
-Run:
+Use `git grep` (searches tracked files only — this automatically excludes the
+untracked `.superpowers/` scratch dir, `node_modules`, and `dist`). Exclude
+`docs/` (design/pipeline docs legitimately name Gatsby) and `LICENSE` (carries
+the upstream "Copyright Gatsby Inc." starter-license line — provenance, not code):
+
 ```bash
-grep -rniE 'gatsby|consumer_key|access_token|100834-' \
-  --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=dist \
-  --exclude-dir=docs . ; echo "exit: $?"
+git grep -niE 'gatsby|consumer_key|access_token|100834-' -- . ':!docs' ':!LICENSE'
+echo "exit: $?"
 ```
-Expected: no matches (grep `exit: 1`). The `docs/` dir is excluded because the spec/pipeline docs legitimately mention Gatsby by name.
+Expected: no matches (`exit: 1`). If anything matches, it is a real leftover —
+fix it before committing. (The rewritten `README.md` must not reintroduce the
+word "Gatsby".)
 
 - [ ] **Step 6: Full build and final check**
 
