@@ -1,0 +1,40 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL, GA_ID } from '../consts';
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+const metaDescription = description || SITE_DESCRIPTION;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="canonical" href={canonical} />
+<title>{pageTitle}</title>
+<meta name="description" content={metaDescription} />
+<meta property="og:title" content={title || SITE_TITLE} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content={`@${SOCIAL.twitter}`} />
+<meta name="twitter:title" content={title || SITE_TITLE} />
+<meta name="twitter:description" content={metaDescription} />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+{
+  import.meta.env.PROD && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <script is:inline define:vars={{ GA_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+      </script>
+    </>
+  )
+}

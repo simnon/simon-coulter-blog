@@ -1,0 +1,12 @@
+---
+import { Image } from 'astro:assets';
+import profilePic from '../assets/profile-pic.png';
+import { AUTHOR, SOCIAL } from '../consts';
+---
+<div class="bio">
+  <Image class="bio-avatar" src={profilePic} width={50} height={50} alt="Profile picture" />
+  <p>
+    Written by <strong>{AUTHOR.name}</strong>{AUTHOR.summary}{' '}
+    <a href={`https://twitter.com/${SOCIAL.twitter}`}>You should follow them on Twitter</a>
+  </p>
+</div>

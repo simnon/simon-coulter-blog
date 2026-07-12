@@ -1,0 +1,31 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Navbar from '../components/Navbar.astro';
+import Bio from '../components/Bio.astro';
+import '@fontsource/montserrat';
+import '@fontsource/merriweather';
+import '../styles/normalize.css';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const isRoot = Astro.url.pathname === '/';
+---
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Navbar />
+    <div class="global-wrapper" data-is-root-path={isRoot}>
+      <main><slot /></main>
+      <footer>
+        <Bio />
+        © {new Date().getFullYear()}, Built with <a href="https://astro.build">Astro</a>
+      </footer>
+    </div>
+  </body>
+</html>

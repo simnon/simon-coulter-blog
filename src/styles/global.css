@@ -319,8 +319,11 @@ a:focus {
   margin: var(--spacing-6);
 }
 
-.gatsby-highlight {
+pre.astro-code {
   margin-bottom: var(--spacing-8);
+  padding: var(--spacing-4);
+  border-radius: 4px;
+  overflow-x: auto;
 }
 
 .navbar-item {
@@ -330,17 +333,16 @@ a:focus {
   padding: var(--spacing-2) var(--spacing-4);
 }
 
-.navbar-start {
-  margin-right: 0;
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
-.navbar-start a {
-  padding: 10px 25px;
-  font-size: 17px;
-  font-weight: 500;
-}
-.navbar-start a:last-child {
-  padding-right: 0;
+.navbar hr {
+  background: var(--color-accent);
+  height: 1px;
+  border: 0;
+  margin: var(--spacing-2) var(--spacing-0);
 }
 
 .navbar-container {
