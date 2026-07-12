@@ -1,19 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { excerpt } from '../utils/excerpt';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
-
-function excerpt(body: string | undefined, description?: string): string {
-  if (description) return description;
-  const text = (body ?? '')
-    .replace(/[#>*_`[\]]/g, '')
-    .replace(/\n+/g, ' ')
-    .trim();
-  return text.length > 160 ? text.slice(0, 160) + '…' : text;
-}
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' });

@@ -1,7 +1,6 @@
 export const SITE_TITLE = 'Simon Coulter Blog';
 export const SITE_DESCRIPTION =
   'Blogging on Engineering Management & building things';
-export const SITE_URL = 'https://www.simoncoulter.com';
 export const AUTHOR = {
   name: 'Simon Coulter',
   summary:
