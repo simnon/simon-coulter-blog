@@ -8,15 +8,21 @@ const doc = parser.parse(xml);
 const asArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 const episodes = [];
 
+const NAMED_ENTITIES = { quot: '"', apos: "'", lt: '<', gt: '>', amp: '&' };
 function decodeEntities(s) {
-  return String(s ?? '')
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&');
+  return String(s ?? '').replace(
+    /&(#x[0-9a-fA-F]+|#\d+|quot|apos|lt|gt|amp);/g,
+    (_, e) => {
+      if (e[0] === '#') {
+        const cp =
+          e[1] === 'x' || e[1] === 'X'
+            ? parseInt(e.slice(2), 16)
+            : parseInt(e.slice(1), 10);
+        return String.fromCodePoint(cp);
+      }
+      return NAMED_ENTITIES[e];
+    },
+  );
 }
 
 // opml.body.outline (category) -> outline (podcast feed) -> outline (episode)
