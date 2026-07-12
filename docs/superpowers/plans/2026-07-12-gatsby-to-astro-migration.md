@@ -6,16 +6,16 @@
 
 **Architecture:** In-place conversion on the `astro-migration` branch. Astro 5 static output, zero client JS. Blog posts become a Zod-schemed content collection rendered from a root-level `[slug].astro` route to keep `/<slug>/` URLs. The theme CSS is moved and tidied, not rewritten. The favourites page ships podcasts-only from a frozen JSON snapshot extracted from the OPML before the plugins are deleted.
 
-**Tech Stack:** Astro 5, `@astrojs/rss`, `@astrojs/sitemap`, `@fontsource/montserrat`, `@fontsource/merriweather`, `fast-xml-parser` (build-time extraction only), yarn, Node 20.
+**Tech Stack:** Astro 5, `@astrojs/rss`, `@astrojs/sitemap`, `@fontsource/montserrat`, `@fontsource/merriweather`, `fast-xml-parser` (build-time extraction only), npm, Node 20.
 
 ## Global Constraints
 
-- **Node:** ≥ 20 (`.nvmrc` = `v20`). Package manager: **yarn**.
+- **Node:** ≥ 20 (`.nvmrc` = `v20`). Package manager: **npm** (lockfile `package-lock.json`).
 - **Site URL:** `https://www.simoncoulter.com` (set as Astro `site`).
 - **Zero client JS** — all components are `.astro`, render to static HTML. Only exception: the GA4 gtag snippet, production-only.
 - **URL preservation:** blog posts MUST resolve at `/<slug>/` (root-level, no `/blog/` prefix). `/FavouriteArticles` MUST redirect to `/favourites`.
 - **GA4 id:** `G-V2JCRMKRVH` (production only).
-- **Verification model:** no unit-test framework. Each task's gate is `yarn build` succeeding plus assertions on `dist/` output. Run assertions **before** implementing to confirm they fail (red), then after (green).
+- **Verification model:** no unit-test framework. Each task's gate is `npm run build` succeeding plus assertions on `dist/` output. Run assertions **before** implementing to confirm they fail (red), then after (green).
 - **Drafts** (`draft: true`) are excluded from the index, RSS, and sitemap.
 - **Secrets:** the Pocket key/token must not appear in any new file. They stay in git history (dead service); do not attempt to scrub history.
 
@@ -25,7 +25,7 @@
 
 ```
 astro.config.mjs            # site, sitemap, redirects
-package.json                # astro deps, yarn scripts
+package.json                # astro deps, npm scripts
 tsconfig.json
 .nvmrc                      # v20
 scripts/extract-podcasts.mjs  # one-shot OPML → podcasts.json
@@ -178,9 +178,9 @@ git rm -q gatsby-config.js gatsby-node.js gatsby-browser.js \
 
 Run:
 ```bash
-yarn install && yarn build && test -f dist/index.html && echo BUILD_OK
+npm install && npm run build && test -f dist/index.html && echo BUILD_OK
 ```
-Expected: ends with `BUILD_OK`. (A fresh `yarn.lock` is generated.)
+Expected: ends with `BUILD_OK`. (A fresh `package-lock.json` is generated.)
 
 - [ ] **Step 9: Commit**
 
@@ -374,7 +374,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 Run:
 ```bash
-yarn build && grep -q 'Simon Coulter Blog' dist/index.html \
+npm run build && grep -q 'Simon Coulter Blog' dist/index.html \
   && grep -q 'Built with' dist/index.html \
   && grep -q 'href="/favourites"' dist/index.html && echo SHELL_OK
 ```
@@ -469,7 +469,7 @@ const dateStr = post.data.date.toLocaleDateString('en-US', {
 
 Run:
 ```bash
-yarn build \
+npm run build \
   && test -f dist/research-time/index.html \
   && grep -q 'Investing in your success' dist/research-time/index.html \
   && echo POST_OK
@@ -545,7 +545,7 @@ const fmt = (d: Date) =>
 
 Run:
 ```bash
-yarn build \
+npm run build \
   && grep -q 'href="/research-time/"' dist/index.html \
   && grep -q 'post-list-item' dist/index.html \
   && echo INDEX_OK
@@ -595,7 +595,7 @@ import { Content } from '../data/projects.md';
 
 Run:
 ```bash
-yarn build \
+npm run build \
   && test -f dist/projects/index.html \
   && grep -q 'Stoic Today' dist/projects/index.html \
   && echo PROJECTS_OK
@@ -662,7 +662,7 @@ console.log(`Wrote ${episodes.length} favourited episodes`);
 
 Run:
 ```bash
-yarn extract-podcasts
+npm run extract-podcasts
 ```
 Expected output: `Wrote 33 favourited episodes`. Confirm each object in `src/data/podcasts.json` has non-empty `name`, `podcastTitle`, and `episodeData`. (If the count differs from 33, cross-check against `grep -c userRecommendedDate data/opml/overcast.opml` and inspect nesting — the parser walk must match the actual depth.)
 
@@ -704,7 +704,7 @@ const recent = [...episodes]
 
 Run:
 ```bash
-yarn build \
+npm run build \
   && test -f dist/favourites/index.html \
   && grep -q 'Favourite Podcast Episodes' dist/favourites/index.html \
   && grep -rq '/favourites' dist/FavouriteArticles/index.html \
@@ -770,7 +770,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 Run:
 ```bash
-yarn build \
+npm run build \
   && grep -q '<rss' dist/rss.xml \
   && grep -q 'Simon Coulter Blog' dist/rss.xml \
   && test -f dist/sitemap-index.xml \
@@ -858,9 +858,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
+          cache: npm
+      - run: npm ci
+      - run: npm run build
 ```
 
 - [ ] **Step 3: Delete Gatsby remnants**
@@ -888,10 +888,10 @@ site to https://www.simoncoulter.com.
 ## Develop
 
 ```bash
-yarn install
-yarn dev      # local dev server
-yarn build    # static build to dist/
-yarn preview  # preview the build
+npm install
+npm run dev      # local dev server
+npm run build    # static build to dist/
+npm run preview  # preview the build
 ```
 
 ## Content
@@ -919,7 +919,7 @@ Expected: no matches (grep `exit: 1`). The `docs/` dir is excluded because the s
 
 Run:
 ```bash
-yarn build && yarn check && echo FINAL_OK
+npm run build && npm run check && echo FINAL_OK
 ```
 Expected: `FINAL_OK` (build clean and `astro check` reports no errors).
 
@@ -935,7 +935,7 @@ git commit -m "Document retired favourites pipeline, remove Gatsby remnants, add
 ## Self-Review
 
 **Spec coverage:**
-- Stack (Astro 5, Shiki, fontsource, yarn, Node 20) → Task 1, 2. ✓
+- Stack (Astro 5, Shiki, fontsource, npm, Node 20) → Task 1, 2. ✓
 - Zod content collection + preserved `/<slug>/` URLs → Task 3. ✓
 - Blog index, drafts excluded → Task 4. ✓
 - Projects page, about dropped → Task 5. ✓

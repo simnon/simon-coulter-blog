@@ -42,7 +42,7 @@ repo (throws away history for no gain).
 - **Shiki** (Astro built-in) for code highlighting — replaces Prism, no client JS.
 - Fonts: `@fontsource/montserrat` + `@fontsource/merriweather` (self-hosted,
   drop-in for the current `typeface-*` packages).
-- Package manager: **yarn** (retained). `.nvmrc` bumped v16.8.0 → **v20**.
+- Package manager: **npm**. `.nvmrc` bumped v16.8.0 → **v20**.
 - No client-side JavaScript ships (all components render to static HTML).
 
 ## Content model
@@ -141,7 +141,7 @@ replaced with a simple `astro build` CI check.
 
 ## Verification
 
-- `yarn build` (`astro build`) completes with no errors.
+- `npm run build` (`astro build`) completes with no errors.
 - Spot-check rendered HTML for `/`, a blog post, `/projects`, `/favourites`,
   `/rss.xml`, and the `/FavouriteArticles` redirect against the current site
   for visual/structural parity.
