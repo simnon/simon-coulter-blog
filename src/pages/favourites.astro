@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import episodes from '../data/podcasts.json';
+
+const recent = [...episodes]
+  .sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf())
+  .slice(0, 10);
+---
+<BaseLayout title="Favourites">
+  <header>
+    <h1>Favourite Podcast Episodes</h1>
+    <p>A collection of podcast episodes that have stood out to me in terms of quality and value.</p>
+  </header>
+  <ol style="list-style: none">
+    {
+      recent.map((ep) => (
+        <li>
+          <article class="post-list-item">
+            <header>
+              <h2>
+                <a href={ep.episodeData}>{ep.podcastTitle}: {ep.name}</a>
+              </h2>
+            </header>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</BaseLayout>

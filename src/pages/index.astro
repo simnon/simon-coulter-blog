@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { excerpt } from '../utils/excerpt';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' });
+---
+<BaseLayout title="All posts">
+  <ol style="list-style: none">
+    {
+      posts.map((post) => (
+        <li>
+          <article class="post-list-item" itemscope itemtype="http://schema.org/Article">
+            <header>
+              <h2>
+                <a href={`/${post.id}/`} itemprop="url">
+                  <span itemprop="headline">{post.data.title}</span>
+                </a>
+              </h2>
+              <small>{fmt(post.data.date)}</small>
+            </header>
+            <section>
+              <p itemprop="description">{excerpt(post.body, post.data.description)}</p>
+            </section>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</BaseLayout>

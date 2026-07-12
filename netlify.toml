@@ -1,0 +1,22 @@
+# Netlify configuration for the Astro static site.
+# Overrides the legacy UI settings that still targeted Gatsby
+# (Gatsby build plugin, `public/` publish dir, `yarn run build`).
+# These netlify.toml values take precedence over the UI-set build command
+# and publish directory. The `@netlify/plugin-gatsby` plugin, however, is
+# UI-installed and MUST be removed in the Netlify dashboard — it cannot be
+# removed from here.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Real 301 for the renamed favourites page (supersedes Astro's static
+# meta-refresh stub with a proper redirect for old inbound links).
+[[redirects]]
+  from = "/FavouriteArticles"
+  to = "/favourites"
+  status = 301
+  force = true

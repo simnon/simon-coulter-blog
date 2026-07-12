@@ -1,4 +1,3 @@
-.cache
-package.json
+dist
+.astro
 package-lock.json
-public
